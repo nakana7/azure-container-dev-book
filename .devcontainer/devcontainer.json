@@ -1,0 +1,61 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/java
+{
+	"name": "Java",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			// コンテナビルド時に渡す引数を指定
+			"VARIANT": "17-bullseye",
+			"INSTALL_MAVEN": "true",
+			"INSTALL_GRADLE": "false",
+			"NODE_VERSION": "lts/*"
+
+		}
+	},
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	//"image": "mcr.microsoft.com/devcontainers/java:1-17-bullseye",
+	// VS Codeと拡張の設定
+
+	// VS Codeに導入する拡張を指定
+	"customizations": {
+		"vscode" : {
+			"settings": {
+				"java.jdt.ls.java.home": "/docker-java-home"
+			},		
+			"extensions": [
+				"vscjava.vscode-java-pack",
+				"redhat.fabric8-analytics",
+				"humao.rest-client",
+				"AquaSecurityOfficial.trivy-vulnerability-scanner"
+			]
+		}
+	},
+	// Dev Containerのユーザ
+	"remoteUser": "nakano",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-from-docker:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/git:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/github-cli:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/azure-cli:1": {
+			"version": "latest"
+		}
+	}
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "java -version",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
